@@ -30,32 +30,50 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		51503E3E2F4004900022AAE0 /* Exceptions for "Yatta" folder in "Yatta" target */ = {
+		5193FDEF2F400DEB000485A6 /* Exceptions for "Yatta" folder in "Yatta" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
 			target = 51503E172F40048D0022AAE0 /* Yatta */;
 		};
+		5193FE3F2F400EED000485A6 /* Exceptions for "YattaTests" folder in "YattaTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Core/DesignSystem/Color+Extension.swift",
+				Core/Storage/Persistence.swift,
+				Features/Calendar/Views/CalendarView.swift,
+				Features/Milestone/ViewModels/AddMilestoneViewModel.swift,
+				Features/Milestone/ViewModels/MilestoneListViewModel.swift,
+				Features/Milestone/Views/AddMilestoneView.swift,
+				Features/Milestone/Views/MilestoneListView.swift,
+				Features/Milestone/Views/MilestoneRow.swift,
+				Repositories/MilestoneRepository.swift,
+			);
+			target = 51503E2B2F4004900022AAE0 /* YattaTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		51503E1A2F40048D0022AAE0 /* Yatta */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				51503E3E2F4004900022AAE0 /* Exceptions for "Yatta" folder in "Yatta" target */,
-			);
-			path = Yatta;
-			sourceTree = "<group>";
-		};
 		51503E2F2F4004900022AAE0 /* YattaTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5193FE3F2F400EED000485A6 /* Exceptions for "YattaTests" folder in "YattaTests" target */,
+			);
 			path = YattaTests;
 			sourceTree = "<group>";
 		};
 		51503E392F4004900022AAE0 /* YattaUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = YattaUITests;
+			sourceTree = "<group>";
+		};
+		5193FDE12F400DEB000485A6 /* Yatta */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5193FDEF2F400DEB000485A6 /* Exceptions for "Yatta" folder in "Yatta" target */,
+			);
+			path = Yatta;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,10 +106,10 @@
 		51503E0F2F40048D0022AAE0 = {
 			isa = PBXGroup;
 			children = (
-				51503E1A2F40048D0022AAE0 /* Yatta */,
 				51503E2F2F4004900022AAE0 /* YattaTests */,
 				51503E392F4004900022AAE0 /* YattaUITests */,
 				51503E192F40048D0022AAE0 /* Products */,
+				5193FDE12F400DEB000485A6 /* Yatta */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,7 +139,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				51503E1A2F40048D0022AAE0 /* Yatta */,
+				5193FDE12F400DEB000485A6 /* Yatta */,
 			);
 			name = Yatta;
 			packageProductDependencies = (
