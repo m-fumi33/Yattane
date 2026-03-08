@@ -2,7 +2,8 @@ import CoreData
 
 protocol MilestoneRepositoryProtocol {
   func fetchMilestones(for child: Child) throws -> [Milestone]
-  func addMilestone(title: String, date: Date, photoData: Data?, note: String?, child: Child) throws
+  func addMilestone(title: String, date: Date, photoDataList: [Data], note: String?, child: Child)
+    throws
   func deleteMilestone(_ milestone: Milestone) throws
   func deleteAllMilestones(for child: Child) throws
 }
@@ -21,16 +22,24 @@ class MilestoneRepository: MilestoneRepositoryProtocol {
     return try context.fetch(request)
   }
 
-  func addMilestone(title: String, date: Date, photoData: Data?, note: String?, child: Child) throws
+  func addMilestone(title: String, date: Date, photoDataList: [Data], note: String?, child: Child)
+    throws
   {
     let milestone = Milestone(context: context)
     milestone.id = UUID()
     milestone.title = title
     milestone.date = date
-    milestone.photoData = photoData
     milestone.note = note
     milestone.createdAt = Date()
     milestone.child = child
+
+    for (index, data) in photoDataList.enumerated() {
+      let image = MilestoneImage(context: context)
+      image.id = UUID()
+      image.imageData = data
+      image.order = Int16(index)
+      image.milestone = milestone
+    }
 
     if context.hasChanges {
       try context.save()

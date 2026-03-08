@@ -6,8 +6,8 @@ class AddMilestoneViewModel {
   var title: String = ""
   var date: Date = Date()
   var note: String = ""
-  var selectedPhotoItem: PhotosPickerItem? = nil
-  var selectedPhotoData: Data? = nil
+  var selectedPhotoItems: [PhotosPickerItem] = []
+  var selectedPhotoDataList: [Data] = []
   var showAlert = false
   var errorMessage = ""
 
@@ -26,11 +26,10 @@ class AddMilestoneViewModel {
       return false
     }
 
-    // Photo and Note are now optional, so no validation needed for them.
-
     do {
       try repository.addMilestone(
-        title: title, date: date, photoData: selectedPhotoData, note: note.isEmpty ? nil : note,
+        title: title, date: date, photoDataList: selectedPhotoDataList,
+        note: note.isEmpty ? nil : note,
         child: child)
       return true
     } catch {
@@ -42,14 +41,16 @@ class AddMilestoneViewModel {
   }
 
   @MainActor
-  func loadPhoto(from item: PhotosPickerItem?) async {
-    guard let item = item else { return }
-    do {
-      if let data = try await item.loadTransferable(type: Data.self) {
-        selectedPhotoData = data
+  func loadPhotos(from items: [PhotosPickerItem]) async {
+    selectedPhotoDataList.removeAll()
+    for item in items {
+      do {
+        if let data = try await item.loadTransferable(type: Data.self) {
+          selectedPhotoDataList.append(data)
+        }
+      } catch {
+        print("Failed to load photo: \(error)")
       }
-    } catch {
-      print("Failed to load photo: \(error)")
     }
   }
 }

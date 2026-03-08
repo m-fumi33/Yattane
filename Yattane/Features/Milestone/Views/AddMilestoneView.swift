@@ -20,26 +20,33 @@ struct AddMilestoneView: View {
         }
 
         Section {
-          PhotosPicker(selection: $viewModel.selectedPhotoItem, matching: .images) {
-            if let data = viewModel.selectedPhotoData, let uiImage = UIImage(data: data) {
-              Image(uiImage: uiImage)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 200)
-                .frame(maxWidth: .infinity)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            } else {
-              HStack {
-                Image(systemName: "photo")
-                Text("写真を選択")
-              }
-              .foregroundColor(.blue)
+          PhotosPicker(selection: $viewModel.selectedPhotoItems, matching: .images) {
+            HStack {
+              Image(systemName: "photo.on.rectangle.angled")
+              Text("写真を選択")
             }
           }
-          .onChange(of: viewModel.selectedPhotoItem) { newItem in
+          .onChange(of: viewModel.selectedPhotoItems) { newItems in
             Task {
-              await viewModel.loadPhoto(from: newItem)
+              await viewModel.loadPhotos(from: newItems)
             }
+          }
+
+          if !viewModel.selectedPhotoDataList.isEmpty {
+            ScrollView(.horizontal, showsIndicators: false) {
+              HStack(spacing: 8) {
+                ForEach(viewModel.selectedPhotoDataList, id: \.self) { data in
+                  if let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                      .resizable()
+                      .scaledToFill()
+                      .frame(width: 100, height: 100)
+                      .clipShape(RoundedRectangle(cornerRadius: 12))
+                  }
+                }
+              }
+            }
+            .padding(.vertical, 8)
           }
         } header: {
           Text("写真")

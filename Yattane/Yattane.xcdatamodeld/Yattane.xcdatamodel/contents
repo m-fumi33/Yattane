@@ -13,8 +13,14 @@
         <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="0"/>
         <attribute name="id" optional="YES" attributeType="UUID"/>
         <attribute name="note" optional="YES" attributeType="String" defaultValueString=""/>
-        <attribute name="photoData" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
         <relationship name="child" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="milestones" inverseEntity="Child"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MilestoneImage" inverseName="milestone" inverseEntity="MilestoneImage"/>
+    </entity>
+    <entity name="MilestoneImage" representedClassName="MilestoneImage" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0"/>
+        <relationship name="milestone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Milestone" inverseName="images" inverseEntity="Milestone"/>
     </entity>
 </model>

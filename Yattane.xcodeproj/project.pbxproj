@@ -42,12 +42,6 @@
 			membershipExceptions = (
 				"Core/DesignSystem/Color+Extension.swift",
 				Core/Storage/Persistence.swift,
-				Features/Calendar/Views/CalendarView.swift,
-				Features/Milestone/ViewModels/AddMilestoneViewModel.swift,
-				Features/Milestone/ViewModels/MilestoneListViewModel.swift,
-				Features/Milestone/Views/AddMilestoneView.swift,
-				Features/Milestone/Views/MilestoneListView.swift,
-				Features/Milestone/Views/MilestoneRow.swift,
 				Repositories/MilestoneRepository.swift,
 			);
 			target = 51503E2B2F4004900022AAE0 /* YattaneTests */;
