@@ -1,5 +1,9 @@
-# 要件定義（非公開）
+# 非公開ファイル
 要件定義.md
+
+# テストモジュール
+YattaneTests/
+YattaneUITests/
 
 # Xcode
 *.xcodeproj/project.xcworkspace/xcuserdata/
