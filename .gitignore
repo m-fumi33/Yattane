@@ -1,11 +1,13 @@
-# 非公開ファイル
-要件定義.md
-
-# テストモジュール
+# Zenn以外のアプリコード・ドキュメントを非公開
+Yattane/
+Yattane.xcodeproj/
 YattaneTests/
 YattaneUITests/
+images/
+要件定義.md
+node_modules/
 
-# Xcode
+# Xcode / Mac
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcuserstate
 *.xcworkspace/xcuserdata/
@@ -21,8 +23,6 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-
-# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -31,17 +31,9 @@ xcuserdata/
 .build/
 *.resolved
 
-# CocoaPods
-Pods/
-
-# Carthage
-Carthage/Build/
-
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
-
-# VSCode
+# ツール・設定
 .vscode/
+package-lock.json
+Pods/
+Carthage/
+fastlane/
