@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m-fumiaki33/Yattane.git"
+    "url": "git+https://github.com/m-fumi33/Yattane.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/m-fumiaki33/Yattane/issues"
+    "url": "https://github.com/m-fumi33/Yattane/issues"
   },
-  "homepage": "https://github.com/m-fumiaki33/Yattane#readme",
+  "homepage": "https://github.com/m-fumi33/Yattane#readme",
   "dependencies": {
     "zenn-cli": "^0.4.7"
   }

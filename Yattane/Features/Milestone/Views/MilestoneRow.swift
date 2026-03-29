@@ -23,9 +23,14 @@ struct MilestoneRow: View {
     guard let child = milestone.child, let birthday = child.birthday, let date = milestone.date
     else { return nil }
     let components = Calendar.current.dateComponents([.month, .day], from: birthday, to: date)
-    if let month = components.month, month > 0 {
+    let month = components.month ?? 0
+    let day = components.day ?? 0
+
+    if month > 0 && day > 0 {
+      return "\(month)ヶ月\(day)日"
+    } else if month > 0 {
       return "\(month)ヶ月"
-    } else if let day = components.day, day >= 0 {
+    } else if day >= 0 {
       return "\(day)日"
     }
     return nil
@@ -39,12 +44,12 @@ struct MilestoneRow: View {
           Image(uiImage: uiImage)
             .resizable()
             .scaledToFill()
-            .frame(height: 180)
+            .frame(height: 140)
             .clipShape(CustomCardCorner(radius: 24, corners: [.topLeft, .topRight]))
         } else {
           Rectangle()
             .fill(Color.theme.secondary.opacity(0.15))
-            .frame(height: 120)
+            .frame(height: 80)
             .clipShape(CustomCardCorner(radius: 24, corners: [.topLeft, .topRight]))
             .overlay(
               Image(systemName: "photo.on.rectangle.angled")
@@ -104,7 +109,7 @@ struct MilestoneRow: View {
           .cornerRadius(12)
         }
       }
-      .padding(20)
+      .padding(16)
     }
     .background(Color.theme.cardBackground)
     .cornerRadius(24)
